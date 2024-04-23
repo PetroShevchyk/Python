@@ -1,0 +1,23 @@
+import pandas as pd
+
+# Виправлений шлях до файлу, використовуючи r-строку для уникнення проблем зі спецсимволами
+data = pd.read_csv(r'C:\Users\Петро\PycharmProjects\Study_Python\Practise 7\pythonProject1\GoogleApps.csv')
+
+# a. Як називається програма, розташована першим у наборі даних?
+first_app_name = data.iloc[0]['App']
+
+# b. До якої категорії відноситься додаток, розташований останнім у наборі даних?
+last_app_category = data.iloc[-1]['Category']
+
+# c. Скільки стовпців міститься у наборі даних?
+num_columns = data.shape[1]
+
+# d. Середнє арифметичне та медіану розміру додатків?
+average_size = data['Size'].mean()
+median_size = data['Size'].median()
+
+# e. До якої категорії відноситься додаток із найбільшою кількістю відгуків?
+max_reviews_app_category = data.iloc[data['Reviews'].idxmax()]['Category']
+
+# f. Який середній рейтинг додатків вартістю понад 20 доларів із кількістю установок більше 10000?
+average_rating_over_20_dollars = data[(data['Price'] > 20) & (data['Installs'] > 10000)]['Rating'].mean()
